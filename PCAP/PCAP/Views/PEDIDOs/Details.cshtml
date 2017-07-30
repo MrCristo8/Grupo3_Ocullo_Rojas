@@ -1,0 +1,50 @@
+﻿@model PCAP.Models.PEDIDO
+
+@{
+    ViewBag.Title = "Detalle Pedido";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PEDIDO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHAPEDIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHAPEDIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDADPEDIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDADPEDIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTE.NOMBRECLIENTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTE.NOMBRECLIENTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCTO.NOMBREPRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCTO.NOMBREPRODUCTO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CODIGOPEDIDO }) |
+    @Html.ActionLink("Regresar a lista", "Index")
+</p>

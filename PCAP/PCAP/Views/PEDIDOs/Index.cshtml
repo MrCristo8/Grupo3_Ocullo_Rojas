@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PCAP.Models.PEDIDO>
+
+@{
+    ViewBag.Title = "Pedidos";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Agregar pedido", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHAPEDIDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CANTIDADPEDIDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLIENTE.NOMBRECLIENTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODUCTO.NOMBREPRODUCTO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHAPEDIDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CANTIDADPEDIDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLIENTE.NOMBRECLIENTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRODUCTO.NOMBREPRODUCTO)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.CODIGOPEDIDO }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.CODIGOPEDIDO }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.CODIGOPEDIDO })
+        </td>
+    </tr>
+}
+
+</table>

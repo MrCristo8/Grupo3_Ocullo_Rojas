@@ -1,0 +1,42 @@
+﻿@model PCAP.Models.PRODUCTO
+
+@{
+    ViewBag.Title = "Detalle producto";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PRODUCTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBREPRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBREPRODUCTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FOTOPRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FOTOPRODUCTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRECIOPRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRECIOPRODUCTO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CODIGOPRODUCTO }) |
+    @Html.ActionLink("Regresar a la lista", "Index")
+</p>

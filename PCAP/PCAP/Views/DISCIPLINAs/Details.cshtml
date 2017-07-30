@@ -1,0 +1,26 @@
+﻿@model PCAP.Models.DISCIPLINA
+
+@{
+    ViewBag.Title = "Detalle Disciplina";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DISCIPLINA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBREDISCIPLINA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBREDISCIPLINA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CODIGODISCIPLINA }) |
+    @Html.ActionLink("Regresar a la lista", "Index")
+</p>

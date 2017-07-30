@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PCAP.Models.CLIENTE>
+
+@{
+    ViewBag.Title = "Clientes";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Añadir Cliente", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRECLIENTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APELLIDOCLIENTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CORREOCLIENTE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONOCLIENTE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRECLIENTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APELLIDOCLIENTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CORREOCLIENTE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONOCLIENTE)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.CODIGOCLIENTE }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.CODIGOCLIENTE }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.CODIGOCLIENTE })
+        </td>
+    </tr>
+}
+
+</table>

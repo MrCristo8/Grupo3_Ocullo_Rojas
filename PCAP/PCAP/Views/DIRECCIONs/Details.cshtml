@@ -1,0 +1,50 @@
+﻿@model PCAP.Models.DIRECCION
+
+@{
+    ViewBag.Title = "Detalle dirección";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DIRECCION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SECTORDIRECCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SECTORDIRECCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BARRIODIRECCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BARRIODIRECCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CALLEPRINCIPAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CALLEPRINCIPAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CALLESECUNDARIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CALLESECUNDARIA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CODIGODIRECCION }) |
+    @Html.ActionLink("Regresar a la lista", "Index")
+</p>

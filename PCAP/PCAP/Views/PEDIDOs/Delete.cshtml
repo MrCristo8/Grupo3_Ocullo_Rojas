@@ -1,0 +1,56 @@
+﻿@model PCAP.Models.PEDIDO
+
+@{
+    ViewBag.Title = "Eliminar pedido";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PEDIDO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHAPEDIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHAPEDIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDADPEDIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDADPEDIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTE.NOMBRECLIENTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTE.NOMBRECLIENTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCTO.NOMBREPRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCTO.NOMBREPRODUCTO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar a la lista", "Index")
+        </div>
+    }
+</div>

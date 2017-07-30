@@ -1,0 +1,13 @@
+24/07/2017 23:54:24	Este registro contiene información acerca de la operación de importación del script 'DBCAP.sql' en el proyecto 'PCAPDB' del equipo 'DESKTOP-AJ9I1O2' por el usuario 'MrCristo.
+24/07/2017 23:54:25	Se inició la importación del archivo: C:\Users\csrm1\Documents\Cris\Espe\5Quinto Semestre\Desarrollo de sistemas\Proyecto\DBCAP.sql 
+24/07/2017 23:54:25	Nombre de archivo: C:\Users\csrm1\Documents\Cris\Espe\5Quinto Semestre\Desarrollo de sistemas\Proyecto\DBCAP.sql (tamaño: 11736)
+24/07/2017 23:54:25	Analizando script de importación
+24/07/2017 23:54:26	Número total de lotes en el script: 38
+24/07/2017 23:54:26	Número total de instrucciones en el script: 19
+24/07/2017 23:54:26	El script se importó correctamente en el proyecto.
+24/07/2017 23:54:26	Analizando los objetos de esquema...
+24/07/2017 23:54:26	Buscando elementos duplicados en el proyecto
+24/07/2017 23:54:26	Ha finalizado el procesamiento de los elementos duplicados
+24/07/2017 23:54:29	En el script que proporcionó para la operación de importación, no se comprendieron totalmente dos o más instrucciones. Estas instrucciones se movieron al archivo ScriptsIgnoredOnImport.sql. Revise el contenido del archivo para obtener más información.
+24/07/2017 23:54:29	Se guardó un resumen de la importación en la siguiente ubicación: C:\Users\csrm1\Documents\Cris\Espe\5Quinto Semestre\Desarrollo de sistemas\Proyecto\PCAPDB\PCAPDB\Registros de importación de scripts\DBCAP_sql_20170725045424.log
+24/07/2017 23:54:29	Haga clic en Finalizar para continuar...

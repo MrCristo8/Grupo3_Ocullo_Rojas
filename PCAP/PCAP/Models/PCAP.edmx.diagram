@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5dd4f765b4ac42fb98bbbcacf15fef0b" Name="Diagram1">
+        <EntityTypeShape EntityType="PCAPDBModel.ARTESANO" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCAPDBModel.CLIENTE" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCAPDBModel.DIRECCION" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCAPDBModel.DISCIPLINA" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCAPDBModel.PEDIDO" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCAPDBModel.PRODUCTO" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PCAPDBModel.STOCK" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="PCAPDBModel.FK_ARTESANO_DISCIPLIN_DISCIPLI" ManuallyRouted="false" />
+        <AssociationConnector Association="PCAPDBModel.FK_ARTESANO_RELATIONS_DIRECCIO" ManuallyRouted="false" />
+        <AssociationConnector Association="PCAPDBModel.FK_STOCK_STOCK_ARTESANO" ManuallyRouted="false" />
+        <AssociationConnector Association="PCAPDBModel.FK_PEDIDO_PEDIDO_CLIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="PCAPDBModel.FK_PEDIDO_PEDIDO2_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="PCAPDBModel.FK_STOCK_STOCK2_PRODUCTO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

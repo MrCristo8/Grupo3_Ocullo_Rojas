@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PCAPDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ARTESANO">
+          <Key>
+            <PropertyRef Name="CODIGOARTESANO" />
+          </Key>
+          <Property Name="CODIGOARTESANO" Type="int" Nullable="false" />
+          <Property Name="CODIGODIRECCION" Type="int" />
+          <Property Name="CODIGODISCIPLINA" Type="int" />
+          <Property Name="CI_RUC_RISE" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="NOMBREARTESANO" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="APELLIDOARTESANO" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="FECHANACIMIENTO" Type="datetime" Nullable="false" />
+          <Property Name="NUMEROAFILIACION" Type="int" Nullable="false" />
+          <Property Name="BARRIOARTESANO" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TELEFONOTALLERARTESANO" Type="varchar" MaxLength="10" />
+          <Property Name="TELEFONODOMICILIOARTESANO" Type="varchar" MaxLength="10" />
+          <Property Name="TELEFONOPERSONALARTESANO" Type="varchar" MaxLength="10" />
+          <Property Name="CORREOARTESANO" Type="varchar" MaxLength="50" />
+          <Property Name="RAZONSOCIAL" Type="text" />
+          <Property Name="ACTIVIDADNEGOCIO" Type="varchar" MaxLength="45" />
+          <Property Name="RESENAHISTORICAMARCA" Type="text" />
+          <Property Name="LOGOMARCA" Type="image" />
+          <Property Name="ACUERTOINTERMINISTERIAL" Type="char" MaxLength="2" />
+          <Property Name="PATENTEMUNICIPAL" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="CODIGOCLIENTE" />
+          </Key>
+          <Property Name="CODIGOCLIENTE" Type="int" Nullable="false" />
+          <Property Name="NOMBRECLIENTE" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="APELLIDOCLIENTE" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="CORREOCLIENTE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TELEFONOCLIENTE" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DIRECCION">
+          <Key>
+            <PropertyRef Name="CODIGODIRECCION" />
+          </Key>
+          <Property Name="CODIGODIRECCION" Type="int" Nullable="false" />
+          <Property Name="SECTORDIRECCION" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="BARRIODIRECCION" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CALLEPRINCIPAL" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="CALLESECUNDARIA" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DISCIPLINA">
+          <Key>
+            <PropertyRef Name="CODIGODISCIPLINA" />
+          </Key>
+          <Property Name="CODIGODISCIPLINA" Type="int" Nullable="false" />
+          <Property Name="NOMBREDISCIPLINA" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="CODIGOPEDIDO" />
+          </Key>
+          <Property Name="CODIGOPEDIDO" Type="int" Nullable="false" />
+          <Property Name="CODIGOCLIENTE" Type="int" Nullable="false" />
+          <Property Name="CODIGOPRODUCTO" Type="int" Nullable="false" />
+          <Property Name="FECHAPEDIDO" Type="datetime" Nullable="false" />
+          <Property Name="CANTIDADPEDIDO" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="CODIGOPRODUCTO" />
+          </Key>
+          <Property Name="CODIGOPRODUCTO" Type="int" Nullable="false" />
+          <Property Name="NOMBREPRODUCTO" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="FOTOPRODUCTO" Type="image" />
+          <Property Name="PRECIOPRODUCTO" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STOCK">
+          <Key>
+            <PropertyRef Name="CODIGOARTESANO" />
+            <PropertyRef Name="CODIGOPRODUCTO" />
+          </Key>
+          <Property Name="CODIGOARTESANO" Type="int" Nullable="false" />
+          <Property Name="CODIGOPRODUCTO" Type="int" Nullable="false" />
+          <Property Name="CANTIDADPRODUCTO" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ARTESANO_DISCIPLIN_DISCIPLI">
+          <End Role="DISCIPLINA" Type="Self.DISCIPLINA" Multiplicity="0..1" />
+          <End Role="ARTESANO" Type="Self.ARTESANO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DISCIPLINA">
+              <PropertyRef Name="CODIGODISCIPLINA" />
+            </Principal>
+            <Dependent Role="ARTESANO">
+              <PropertyRef Name="CODIGODISCIPLINA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTESANO_RELATIONS_DIRECCIO">
+          <End Role="DIRECCION" Type="Self.DIRECCION" Multiplicity="0..1" />
+          <End Role="ARTESANO" Type="Self.ARTESANO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIRECCION">
+              <PropertyRef Name="CODIGODIRECCION" />
+            </Principal>
+            <Dependent Role="ARTESANO">
+              <PropertyRef Name="CODIGODIRECCION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_PEDIDO_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="CODIGOCLIENTE" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="CODIGOCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_PEDIDO2_PRODUCTO">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="CODIGOPRODUCTO" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="CODIGOPRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STOCK_STOCK_ARTESANO">
+          <End Role="ARTESANO" Type="Self.ARTESANO" Multiplicity="1" />
+          <End Role="STOCK" Type="Self.STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTESANO">
+              <PropertyRef Name="CODIGOARTESANO" />
+            </Principal>
+            <Dependent Role="STOCK">
+              <PropertyRef Name="CODIGOARTESANO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STOCK_STOCK2_PRODUCTO">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="STOCK" Type="Self.STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="CODIGOPRODUCTO" />
+            </Principal>
+            <Dependent Role="STOCK">
+              <PropertyRef Name="CODIGOPRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PCAPDBModelStoreContainer">
+          <EntitySet Name="ARTESANO" EntityType="Self.ARTESANO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DIRECCION" EntityType="Self.DIRECCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DISCIPLINA" EntityType="Self.DISCIPLINA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STOCK" EntityType="Self.STOCK" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ARTESANO_DISCIPLIN_DISCIPLI" Association="Self.FK_ARTESANO_DISCIPLIN_DISCIPLI">
+            <End Role="DISCIPLINA" EntitySet="DISCIPLINA" />
+            <End Role="ARTESANO" EntitySet="ARTESANO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTESANO_RELATIONS_DIRECCIO" Association="Self.FK_ARTESANO_RELATIONS_DIRECCIO">
+            <End Role="DIRECCION" EntitySet="DIRECCION" />
+            <End Role="ARTESANO" EntitySet="ARTESANO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_PEDIDO_CLIENTE" Association="Self.FK_PEDIDO_PEDIDO_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_PEDIDO2_PRODUCTO" Association="Self.FK_PEDIDO_PEDIDO2_PRODUCTO">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STOCK_STOCK_ARTESANO" Association="Self.FK_STOCK_STOCK_ARTESANO">
+            <End Role="ARTESANO" EntitySet="ARTESANO" />
+            <End Role="STOCK" EntitySet="STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STOCK_STOCK2_PRODUCTO" Association="Self.FK_STOCK_STOCK2_PRODUCTO">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="STOCK" EntitySet="STOCK" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PCAPDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ARTESANO">
+          <Key>
+            <PropertyRef Name="CODIGOARTESANO" />
+          </Key>
+          <Property Name="CODIGOARTESANO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGODIRECCION" Type="Int32" />
+          <Property Name="CODIGODISCIPLINA" Type="Int32" />
+          <Property Name="CI_RUC_RISE" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBREARTESANO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOARTESANO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHANACIMIENTO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NUMEROAFILIACION" Type="Int32" Nullable="false" />
+          <Property Name="BARRIOARTESANO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONOTALLERARTESANO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONODOMICILIOARTESANO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONOPERSONALARTESANO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CORREOARTESANO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RAZONSOCIAL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVIDADNEGOCIO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="RESENAHISTORICAMARCA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LOGOMARCA" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ACUERTOINTERMINISTERIAL" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="PATENTEMUNICIPAL" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="DISCIPLINA" Relationship="Self.FK_ARTESANO_DISCIPLIN_DISCIPLI" FromRole="ARTESANO" ToRole="DISCIPLINA" />
+          <NavigationProperty Name="DIRECCION" Relationship="Self.FK_ARTESANO_RELATIONS_DIRECCIO" FromRole="ARTESANO" ToRole="DIRECCION" />
+          <NavigationProperty Name="STOCK" Relationship="Self.FK_STOCK_STOCK_ARTESANO" FromRole="ARTESANO" ToRole="STOCK" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="CODIGOCLIENTE" />
+          </Key>
+          <Property Name="CODIGOCLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRECLIENTE" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOCLIENTE" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREOCLIENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONOCLIENTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PEDIDO" Relationship="Self.FK_PEDIDO_PEDIDO_CLIENTE" FromRole="CLIENTE" ToRole="PEDIDO" />
+        </EntityType>
+        <EntityType Name="DIRECCION">
+          <Key>
+            <PropertyRef Name="CODIGODIRECCION" />
+          </Key>
+          <Property Name="CODIGODIRECCION" Type="Int32" Nullable="false" />
+          <Property Name="SECTORDIRECCION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BARRIODIRECCION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CALLEPRINCIPAL" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CALLESECUNDARIA" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ARTESANO" Relationship="Self.FK_ARTESANO_RELATIONS_DIRECCIO" FromRole="DIRECCION" ToRole="ARTESANO" />
+        </EntityType>
+        <EntityType Name="DISCIPLINA">
+          <Key>
+            <PropertyRef Name="CODIGODISCIPLINA" />
+          </Key>
+          <Property Name="CODIGODISCIPLINA" Type="Int32" Nullable="false" />
+          <Property Name="NOMBREDISCIPLINA" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ARTESANO" Relationship="Self.FK_ARTESANO_DISCIPLIN_DISCIPLI" FromRole="DISCIPLINA" ToRole="ARTESANO" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="CODIGOPEDIDO" />
+          </Key>
+          <Property Name="CODIGOPEDIDO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGOCLIENTE" Type="Int32" Nullable="false" />
+          <Property Name="CODIGOPRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="FECHAPEDIDO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CANTIDADPEDIDO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.FK_PEDIDO_PEDIDO_CLIENTE" FromRole="PEDIDO" ToRole="CLIENTE" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_PEDIDO_PEDIDO2_PRODUCTO" FromRole="PEDIDO" ToRole="PRODUCTO" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="CODIGOPRODUCTO" />
+          </Key>
+          <Property Name="CODIGOPRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="NOMBREPRODUCTO" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FOTOPRODUCTO" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PRECIOPRODUCTO" Type="Double" Nullable="false" />
+          <NavigationProperty Name="PEDIDO" Relationship="Self.FK_PEDIDO_PEDIDO2_PRODUCTO" FromRole="PRODUCTO" ToRole="PEDIDO" />
+          <NavigationProperty Name="STOCK" Relationship="Self.FK_STOCK_STOCK2_PRODUCTO" FromRole="PRODUCTO" ToRole="STOCK" />
+        </EntityType>
+        <EntityType Name="STOCK">
+          <Key>
+            <PropertyRef Name="CODIGOARTESANO" />
+            <PropertyRef Name="CODIGOPRODUCTO" />
+          </Key>
+          <Property Name="CODIGOARTESANO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGOPRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="CANTIDADPRODUCTO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ARTESANO" Relationship="Self.FK_STOCK_STOCK_ARTESANO" FromRole="STOCK" ToRole="ARTESANO" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_STOCK_STOCK2_PRODUCTO" FromRole="STOCK" ToRole="PRODUCTO" />
+        </EntityType>
+        <Association Name="FK_ARTESANO_DISCIPLIN_DISCIPLI">
+          <End Role="DISCIPLINA" Type="Self.DISCIPLINA" Multiplicity="0..1" />
+          <End Role="ARTESANO" Type="Self.ARTESANO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DISCIPLINA">
+              <PropertyRef Name="CODIGODISCIPLINA" />
+            </Principal>
+            <Dependent Role="ARTESANO">
+              <PropertyRef Name="CODIGODISCIPLINA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTESANO_RELATIONS_DIRECCIO">
+          <End Role="DIRECCION" Type="Self.DIRECCION" Multiplicity="0..1" />
+          <End Role="ARTESANO" Type="Self.ARTESANO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIRECCION">
+              <PropertyRef Name="CODIGODIRECCION" />
+            </Principal>
+            <Dependent Role="ARTESANO">
+              <PropertyRef Name="CODIGODIRECCION" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STOCK_STOCK_ARTESANO">
+          <End Role="ARTESANO" Type="Self.ARTESANO" Multiplicity="1" />
+          <End Role="STOCK" Type="Self.STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTESANO">
+              <PropertyRef Name="CODIGOARTESANO" />
+            </Principal>
+            <Dependent Role="STOCK">
+              <PropertyRef Name="CODIGOARTESANO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_PEDIDO_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="CODIGOCLIENTE" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="CODIGOCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_PEDIDO2_PRODUCTO">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="CODIGOPRODUCTO" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="CODIGOPRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STOCK_STOCK2_PRODUCTO">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+          <End Role="STOCK" Type="Self.STOCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="CODIGOPRODUCTO" />
+            </Principal>
+            <Dependent Role="STOCK">
+              <PropertyRef Name="CODIGOPRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PCAPDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ARTESANO" EntityType="Self.ARTESANO" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="DIRECCION" EntityType="Self.DIRECCION" />
+          <EntitySet Name="DISCIPLINA" EntityType="Self.DISCIPLINA" />
+          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+          <EntitySet Name="STOCK" EntityType="Self.STOCK" />
+          <AssociationSet Name="FK_ARTESANO_DISCIPLIN_DISCIPLI" Association="Self.FK_ARTESANO_DISCIPLIN_DISCIPLI">
+            <End Role="DISCIPLINA" EntitySet="DISCIPLINA" />
+            <End Role="ARTESANO" EntitySet="ARTESANO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTESANO_RELATIONS_DIRECCIO" Association="Self.FK_ARTESANO_RELATIONS_DIRECCIO">
+            <End Role="DIRECCION" EntitySet="DIRECCION" />
+            <End Role="ARTESANO" EntitySet="ARTESANO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STOCK_STOCK_ARTESANO" Association="Self.FK_STOCK_STOCK_ARTESANO">
+            <End Role="ARTESANO" EntitySet="ARTESANO" />
+            <End Role="STOCK" EntitySet="STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_PEDIDO_CLIENTE" Association="Self.FK_PEDIDO_PEDIDO_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_PEDIDO2_PRODUCTO" Association="Self.FK_PEDIDO_PEDIDO2_PRODUCTO">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STOCK_STOCK2_PRODUCTO" Association="Self.FK_STOCK_STOCK2_PRODUCTO">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="STOCK" EntitySet="STOCK" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PCAPDBModelStoreContainer" CdmEntityContainer="PCAPDBEntities">
+          <EntitySetMapping Name="ARTESANO">
+            <EntityTypeMapping TypeName="PCAPDBModel.ARTESANO">
+              <MappingFragment StoreEntitySet="ARTESANO">
+                <ScalarProperty Name="CODIGOARTESANO" ColumnName="CODIGOARTESANO" />
+                <ScalarProperty Name="CODIGODIRECCION" ColumnName="CODIGODIRECCION" />
+                <ScalarProperty Name="CODIGODISCIPLINA" ColumnName="CODIGODISCIPLINA" />
+                <ScalarProperty Name="CI_RUC_RISE" ColumnName="CI_RUC_RISE" />
+                <ScalarProperty Name="NOMBREARTESANO" ColumnName="NOMBREARTESANO" />
+                <ScalarProperty Name="APELLIDOARTESANO" ColumnName="APELLIDOARTESANO" />
+                <ScalarProperty Name="FECHANACIMIENTO" ColumnName="FECHANACIMIENTO" />
+                <ScalarProperty Name="NUMEROAFILIACION" ColumnName="NUMEROAFILIACION" />
+                <ScalarProperty Name="BARRIOARTESANO" ColumnName="BARRIOARTESANO" />
+                <ScalarProperty Name="TELEFONOTALLERARTESANO" ColumnName="TELEFONOTALLERARTESANO" />
+                <ScalarProperty Name="TELEFONODOMICILIOARTESANO" ColumnName="TELEFONODOMICILIOARTESANO" />
+                <ScalarProperty Name="TELEFONOPERSONALARTESANO" ColumnName="TELEFONOPERSONALARTESANO" />
+                <ScalarProperty Name="CORREOARTESANO" ColumnName="CORREOARTESANO" />
+                <ScalarProperty Name="RAZONSOCIAL" ColumnName="RAZONSOCIAL" />
+                <ScalarProperty Name="ACTIVIDADNEGOCIO" ColumnName="ACTIVIDADNEGOCIO" />
+                <ScalarProperty Name="RESENAHISTORICAMARCA" ColumnName="RESENAHISTORICAMARCA" />
+                <ScalarProperty Name="LOGOMARCA" ColumnName="LOGOMARCA" />
+                <ScalarProperty Name="ACUERTOINTERMINISTERIAL" ColumnName="ACUERTOINTERMINISTERIAL" />
+                <ScalarProperty Name="PATENTEMUNICIPAL" ColumnName="PATENTEMUNICIPAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="PCAPDBModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="CODIGOCLIENTE" ColumnName="CODIGOCLIENTE" />
+                <ScalarProperty Name="NOMBRECLIENTE" ColumnName="NOMBRECLIENTE" />
+                <ScalarProperty Name="APELLIDOCLIENTE" ColumnName="APELLIDOCLIENTE" />
+                <ScalarProperty Name="CORREOCLIENTE" ColumnName="CORREOCLIENTE" />
+                <ScalarProperty Name="TELEFONOCLIENTE" ColumnName="TELEFONOCLIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIRECCION">
+            <EntityTypeMapping TypeName="PCAPDBModel.DIRECCION">
+              <MappingFragment StoreEntitySet="DIRECCION">
+                <ScalarProperty Name="CODIGODIRECCION" ColumnName="CODIGODIRECCION" />
+                <ScalarProperty Name="SECTORDIRECCION" ColumnName="SECTORDIRECCION" />
+                <ScalarProperty Name="BARRIODIRECCION" ColumnName="BARRIODIRECCION" />
+                <ScalarProperty Name="CALLEPRINCIPAL" ColumnName="CALLEPRINCIPAL" />
+                <ScalarProperty Name="CALLESECUNDARIA" ColumnName="CALLESECUNDARIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DISCIPLINA">
+            <EntityTypeMapping TypeName="PCAPDBModel.DISCIPLINA">
+              <MappingFragment StoreEntitySet="DISCIPLINA">
+                <ScalarProperty Name="CODIGODISCIPLINA" ColumnName="CODIGODISCIPLINA" />
+                <ScalarProperty Name="NOMBREDISCIPLINA" ColumnName="NOMBREDISCIPLINA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEDIDO">
+            <EntityTypeMapping TypeName="PCAPDBModel.PEDIDO">
+              <MappingFragment StoreEntitySet="PEDIDO">
+                <ScalarProperty Name="CODIGOPEDIDO" ColumnName="CODIGOPEDIDO" />
+                <ScalarProperty Name="CODIGOCLIENTE" ColumnName="CODIGOCLIENTE" />
+                <ScalarProperty Name="CODIGOPRODUCTO" ColumnName="CODIGOPRODUCTO" />
+                <ScalarProperty Name="FECHAPEDIDO" ColumnName="FECHAPEDIDO" />
+                <ScalarProperty Name="CANTIDADPEDIDO" ColumnName="CANTIDADPEDIDO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="PCAPDBModel.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="CODIGOPRODUCTO" ColumnName="CODIGOPRODUCTO" />
+                <ScalarProperty Name="NOMBREPRODUCTO" ColumnName="NOMBREPRODUCTO" />
+                <ScalarProperty Name="FOTOPRODUCTO" ColumnName="FOTOPRODUCTO" />
+                <ScalarProperty Name="PRECIOPRODUCTO" ColumnName="PRECIOPRODUCTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STOCK">
+            <EntityTypeMapping TypeName="PCAPDBModel.STOCK">
+              <MappingFragment StoreEntitySet="STOCK">
+                <ScalarProperty Name="CODIGOARTESANO" ColumnName="CODIGOARTESANO" />
+                <ScalarProperty Name="CODIGOPRODUCTO" ColumnName="CODIGOPRODUCTO" />
+                <ScalarProperty Name="CANTIDADPRODUCTO" ColumnName="CANTIDADPRODUCTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

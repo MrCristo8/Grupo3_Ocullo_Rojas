@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PCAPDBModelStoreContainer" CdmEntityContainer="PCAPDBEntities">
+    <EntitySetMapping Name="ARTESANO">
+      <EntityTypeMapping TypeName="PCAPDBModel.ARTESANO">
+        <MappingFragment StoreEntitySet="ARTESANO">
+          <ScalarProperty Name="CODIGOARTESANO" ColumnName="CODIGOARTESANO" />
+          <ScalarProperty Name="CODIGODIRECCION" ColumnName="CODIGODIRECCION" />
+          <ScalarProperty Name="CODIGODISCIPLINA" ColumnName="CODIGODISCIPLINA" />
+          <ScalarProperty Name="CI_RUC_RISE" ColumnName="CI_RUC_RISE" />
+          <ScalarProperty Name="NOMBREARTESANO" ColumnName="NOMBREARTESANO" />
+          <ScalarProperty Name="APELLIDOARTESANO" ColumnName="APELLIDOARTESANO" />
+          <ScalarProperty Name="FECHANACIMIENTO" ColumnName="FECHANACIMIENTO" />
+          <ScalarProperty Name="NUMEROAFILIACION" ColumnName="NUMEROAFILIACION" />
+          <ScalarProperty Name="BARRIOARTESANO" ColumnName="BARRIOARTESANO" />
+          <ScalarProperty Name="TELEFONOTALLERARTESANO" ColumnName="TELEFONOTALLERARTESANO" />
+          <ScalarProperty Name="TELEFONODOMICILIOARTESANO" ColumnName="TELEFONODOMICILIOARTESANO" />
+          <ScalarProperty Name="TELEFONOPERSONALARTESANO" ColumnName="TELEFONOPERSONALARTESANO" />
+          <ScalarProperty Name="CORREOARTESANO" ColumnName="CORREOARTESANO" />
+          <ScalarProperty Name="RAZONSOCIAL" ColumnName="RAZONSOCIAL" />
+          <ScalarProperty Name="ACTIVIDADNEGOCIO" ColumnName="ACTIVIDADNEGOCIO" />
+          <ScalarProperty Name="RESENAHISTORICAMARCA" ColumnName="RESENAHISTORICAMARCA" />
+          <ScalarProperty Name="LOGOMARCA" ColumnName="LOGOMARCA" />
+          <ScalarProperty Name="ACUERTOINTERMINISTERIAL" ColumnName="ACUERTOINTERMINISTERIAL" />
+          <ScalarProperty Name="PATENTEMUNICIPAL" ColumnName="PATENTEMUNICIPAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="PCAPDBModel.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="CODIGOCLIENTE" ColumnName="CODIGOCLIENTE" />
+          <ScalarProperty Name="NOMBRECLIENTE" ColumnName="NOMBRECLIENTE" />
+          <ScalarProperty Name="APELLIDOCLIENTE" ColumnName="APELLIDOCLIENTE" />
+          <ScalarProperty Name="CORREOCLIENTE" ColumnName="CORREOCLIENTE" />
+          <ScalarProperty Name="TELEFONOCLIENTE" ColumnName="TELEFONOCLIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DIRECCION">
+      <EntityTypeMapping TypeName="PCAPDBModel.DIRECCION">
+        <MappingFragment StoreEntitySet="DIRECCION">
+          <ScalarProperty Name="CODIGODIRECCION" ColumnName="CODIGODIRECCION" />
+          <ScalarProperty Name="SECTORDIRECCION" ColumnName="SECTORDIRECCION" />
+          <ScalarProperty Name="BARRIODIRECCION" ColumnName="BARRIODIRECCION" />
+          <ScalarProperty Name="CALLEPRINCIPAL" ColumnName="CALLEPRINCIPAL" />
+          <ScalarProperty Name="CALLESECUNDARIA" ColumnName="CALLESECUNDARIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISCIPLINA">
+      <EntityTypeMapping TypeName="PCAPDBModel.DISCIPLINA">
+        <MappingFragment StoreEntitySet="DISCIPLINA">
+          <ScalarProperty Name="CODIGODISCIPLINA" ColumnName="CODIGODISCIPLINA" />
+          <ScalarProperty Name="NOMBREDISCIPLINA" ColumnName="NOMBREDISCIPLINA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PEDIDO">
+      <EntityTypeMapping TypeName="PCAPDBModel.PEDIDO">
+        <MappingFragment StoreEntitySet="PEDIDO">
+          <ScalarProperty Name="CODIGOPEDIDO" ColumnName="CODIGOPEDIDO" />
+          <ScalarProperty Name="CODIGOCLIENTE" ColumnName="CODIGOCLIENTE" />
+          <ScalarProperty Name="CODIGOPRODUCTO" ColumnName="CODIGOPRODUCTO" />
+          <ScalarProperty Name="FECHAPEDIDO" ColumnName="FECHAPEDIDO" />
+          <ScalarProperty Name="CANTIDADPEDIDO" ColumnName="CANTIDADPEDIDO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="PCAPDBModel.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="CODIGOPRODUCTO" ColumnName="CODIGOPRODUCTO" />
+          <ScalarProperty Name="NOMBREPRODUCTO" ColumnName="NOMBREPRODUCTO" />
+          <ScalarProperty Name="FOTOPRODUCTO" ColumnName="FOTOPRODUCTO" />
+          <ScalarProperty Name="PRECIOPRODUCTO" ColumnName="PRECIOPRODUCTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STOCK">
+      <EntityTypeMapping TypeName="PCAPDBModel.STOCK">
+        <MappingFragment StoreEntitySet="STOCK">
+          <ScalarProperty Name="CODIGOARTESANO" ColumnName="CODIGOARTESANO" />
+          <ScalarProperty Name="CODIGOPRODUCTO" ColumnName="CODIGOPRODUCTO" />
+          <ScalarProperty Name="CANTIDADPRODUCTO" ColumnName="CANTIDADPRODUCTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

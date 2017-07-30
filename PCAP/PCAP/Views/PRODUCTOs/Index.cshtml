@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PCAP.Models.PRODUCTO>
+
+@{
+    ViewBag.Title = "Productos";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Agregar productos", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBREPRODUCTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FOTOPRODUCTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRECIOPRODUCTO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBREPRODUCTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FOTOPRODUCTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRECIOPRODUCTO)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.CODIGOPRODUCTO }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.CODIGOPRODUCTO }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.CODIGOPRODUCTO })
+        </td>
+    </tr>
+}
+
+</table>

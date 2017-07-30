@@ -1,0 +1,135 @@
+﻿@model IEnumerable<PCAP.Models.ARTESANO>
+
+@{
+    ViewBag.Title = "Artesanos";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Añadir Artesano", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CI_RUC_RISE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBREARTESANO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APELLIDOARTESANO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHANACIMIENTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NUMEROAFILIACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BARRIOARTESANO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONOTALLERARTESANO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONODOMICILIOARTESANO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONOPERSONALARTESANO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CORREOARTESANO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RAZONSOCIAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACTIVIDADNEGOCIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RESENAHISTORICAMARCA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LOGOMARCA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACUERTOINTERMINISTERIAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PATENTEMUNICIPAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DISCIPLINA.NOMBREDISCIPLINA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DIRECCION.SECTORDIRECCION)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CI_RUC_RISE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBREARTESANO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APELLIDOARTESANO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHANACIMIENTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NUMEROAFILIACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BARRIOARTESANO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONOTALLERARTESANO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONODOMICILIOARTESANO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONOPERSONALARTESANO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CORREOARTESANO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RAZONSOCIAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ACTIVIDADNEGOCIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RESENAHISTORICAMARCA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LOGOMARCA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ACUERTOINTERMINISTERIAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PATENTEMUNICIPAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DISCIPLINA.NOMBREDISCIPLINA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DIRECCION.SECTORDIRECCION)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.CODIGOARTESANO }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.CODIGOARTESANO }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.CODIGOARTESANO })
+        </td>
+    </tr>
+}
+
+</table>

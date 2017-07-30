@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PCAP.Models.DIRECCION>
+
+@{
+    ViewBag.Title = "Direccions";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Agregar dirección", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SECTORDIRECCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BARRIODIRECCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CALLEPRINCIPAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CALLESECUNDARIA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SECTORDIRECCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BARRIODIRECCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CALLEPRINCIPAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CALLESECUNDARIA)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.CODIGODIRECCION }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.CODIGODIRECCION }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.CODIGODIRECCION })
+        </td>
+    </tr>
+}
+
+</table>

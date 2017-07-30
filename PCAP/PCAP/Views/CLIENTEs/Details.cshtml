@@ -1,0 +1,50 @@
+﻿@model PCAP.Models.CLIENTE
+
+@{
+    ViewBag.Title = "Detaille Cliente";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CLIENTE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRECLIENTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRECLIENTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDOCLIENTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDOCLIENTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CORREOCLIENTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CORREOCLIENTE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONOCLIENTE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONOCLIENTE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CODIGOCLIENTE }) |
+    @Html.ActionLink("Regresar a lista", "Index")
+</p>

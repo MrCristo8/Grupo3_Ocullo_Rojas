@@ -1,0 +1,32 @@
+﻿@model PCAP.Models.DISCIPLINA
+
+@{
+    ViewBag.Title = "Eliminar Disciplina";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DISCIPLINA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBREDISCIPLINA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBREDISCIPLINA)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar a la lista", "Index")
+        </div>
+    }
+</div>

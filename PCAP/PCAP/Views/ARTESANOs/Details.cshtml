@@ -1,0 +1,162 @@
+﻿@model PCAP.Models.ARTESANO
+
+@{
+    ViewBag.Title = "Delles Artesano";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ARTESANO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CI_RUC_RISE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CI_RUC_RISE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBREARTESANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBREARTESANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDOARTESANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDOARTESANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHANACIMIENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHANACIMIENTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NUMEROAFILIACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUMEROAFILIACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BARRIOARTESANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BARRIOARTESANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONOTALLERARTESANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONOTALLERARTESANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONODOMICILIOARTESANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONODOMICILIOARTESANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONOPERSONALARTESANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONOPERSONALARTESANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CORREOARTESANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CORREOARTESANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RAZONSOCIAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RAZONSOCIAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTIVIDADNEGOCIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTIVIDADNEGOCIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RESENAHISTORICAMARCA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RESENAHISTORICAMARCA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOGOMARCA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOGOMARCA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACUERTOINTERMINISTERIAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACUERTOINTERMINISTERIAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PATENTEMUNICIPAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PATENTEMUNICIPAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISCIPLINA.NOMBREDISCIPLINA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISCIPLINA.NOMBREDISCIPLINA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DIRECCION.SECTORDIRECCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIRECCION.SECTORDIRECCION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CODIGOARTESANO }) |
+    @Html.ActionLink("Regresar a la lista", "Index")
+</p>

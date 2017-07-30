@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PCAP.Models.DISCIPLINA>
+
+@{
+    ViewBag.Title = "Disciplinas";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Agregar Disciplina", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBREDISCIPLINA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBREDISCIPLINA)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.CODIGODISCIPLINA }) |
+            @Html.ActionLink("Detale", "Details", new { id=item.CODIGODISCIPLINA }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.CODIGODISCIPLINA })
+        </td>
+    </tr>
+}
+
+</table>

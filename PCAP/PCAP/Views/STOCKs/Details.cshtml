@@ -1,0 +1,42 @@
+﻿@model PCAP.Models.STOCK
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>STOCK</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDADPRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDADPRODUCTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ARTESANO.CI_RUC_RISE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARTESANO.CI_RUC_RISE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCTO.NOMBREPRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCTO.NOMBREPRODUCTO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
